@@ -24,7 +24,6 @@ public class Basket {
     @Id
     private UUID id;
 
-    //    @JoinColumn(name = "basket_id")
     @Builder.Default
     @OneToMany(cascade = ALL, orphanRemoval = true, mappedBy = "basket")
     private List<Apple> apples = new ArrayList<>();

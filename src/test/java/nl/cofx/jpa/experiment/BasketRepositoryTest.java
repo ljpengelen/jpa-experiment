@@ -75,10 +75,9 @@ class BasketRepositoryTest {
         var persistedCrippsRed = appleRepository.findById(CRIPPS_RED_ID);
         assertThat(persistedCrippsRed).contains(crippsRed);
 
-        basket.removeApple(persistedCrippsPink.get());
-        basket.removeApple(persistedCrippsRed.get());
+        basket.removeApple(persistedCrippsPink.get())
+                .removeApple(persistedCrippsRed.get());
         basketRepository.save(basket);
-//        entityManager.flush();
 
         System.out.println(appleRepository.findAll());
         persistedCrippsPink = appleRepository.findById(CRIPPS_PINK_ID);
