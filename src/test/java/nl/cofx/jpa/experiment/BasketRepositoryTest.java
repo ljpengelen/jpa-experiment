@@ -8,7 +8,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 
-import java.util.List;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -43,8 +42,9 @@ class BasketRepositoryTest {
                 .build();
         var basket = Basket.builder()
                 .id(BASKET_ID)
-                .apples(List.of(crippsPink, crippsRed))
-                .build();
+                .build()
+                .addApple(crippsPink)
+                .addApple(crippsRed);
 
         var persistedBasket = basketRepository.save(basket);
 
@@ -99,8 +99,9 @@ class BasketRepositoryTest {
                 .build();
         var basket = Basket.builder()
                 .id(BASKET_ID)
-                .apples(List.of(crippsPink, crippsRed))
-                .build();
+                .build()
+                .addApple(crippsPink)
+                .addApple(crippsRed);
         basketRepository.save(basket);
 
         var persistedCrippsPink = appleRepository.findById(CRIPPS_PINK_ID);
